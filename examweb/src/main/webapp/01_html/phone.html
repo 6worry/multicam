@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Phone</title>
+	</head>
+	<body>
+		<h1>검색할 단어를 입력하세요.</h1>
+		<hr />
+		<form method="post">
+			<p>
+				검색할 단어<input type="search" name="search" />
+				<button type="submit">검색 시작</button>
+			</p>
+		</form>
+		<hr />
+		<form method="post">
+			<h1>로그인 화면</h1>
+			<p>아이디<input type="text" name="ID"/></p>
+			<p>패스워드<input type="password" name="PW"/></p>
+			<button type="submit">로그인 처리2</button>
+		</form>
+		<hr />
+		<form method="post">
+			<h1>회원가입 화면</h1>
+			<p>가입할id<input type="text" name="ID"/></p>
+			<p>가입할pw<input type="password" name="PW"/></p>
+			<p>가입할name<input type="text" name="nickname" placeholder="이름 성 순서대로"/></p>
+			<p>성별
+				<input type="radio" name="gender" />남자
+				<input type="radio" name="gender" />여자
+			</p>
+			<p>취미
+				<input type="checkbox" name="hobby" />달리기
+				<input type="checkbox" name="hobby" />동영상보기
+				<input type="checkbox" name="hobby" />인터넷서핑
+			</p>
+			<p>전화번호 통신사
+				<select name="company">
+					<option>알뜰폰</option>
+					<option>SKT</option>
+					<option>KT</option>
+					<option>LG</option>
+				</select>
+				<input type="text" name="phone_number" placeholder="-없이 숫자로 이어서 쓰세요."/>
+			</p>
+			<p>생년월일<input type="date" name="date"/></p>
+			<p>
+				가입한 시기<input type="datetime-local" name="datetime"/>
+				가입한 주<input type="week" name="week"/>
+			</p>
+			<p>하고 싶은 말 
+				<textarea rows="5" cols="50" placeholder="100글자 이내로 써주세요."></textarea>
+			</p>
+			<button type="submit">회원가입</button>
+		</form>
+	</body>
+</html>

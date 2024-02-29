@@ -1,0 +1,13 @@
+@charset "UTF-8";
+
+div {
+	width: 500px;
+	height: 500px;
+	background-color: yellow;
+	margin: 10px;
+}
+
+p {
+	color: lime;
+	font-size: 14pt;
+}
