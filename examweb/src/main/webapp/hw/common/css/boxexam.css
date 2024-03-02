@@ -1,0 +1,15 @@
+@charset "UTF-8";
+h1 {
+	color: #388e93;
+}
+
+#content {
+	border: 1px none;
+	background-image: url("../images/background.gif");
+	background-color: #a7cece;
+	background-repeat:no-repeat;
+	margin: 30px;
+	padding: 20px;
+	padding-left: 85px;
+	padding-bottom: 50px;
+}
