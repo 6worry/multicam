@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<title>Insert title here</title>
+		<style>
+			body {
+				margin: 100px;
+			}
+			
+			#main {
+				padding-left: 100px;
+				padding-right: 100px;
+			}
+			
+			#header {
+				height: 100px;
+				background-color: red;
+			}
+			
+			#layout {
+				display: flex;
+				flex-wrap: wrap;
+			}
+			
+			#sidebar1 {
+				height: 15%;
+				background-color: brown;
+				flex-basis: 15%;
+			}
+			
+			#sidebar2 {
+				height: 15%;
+				background-color: green;
+				flex-basis: 15%;
+			}
+			
+			#content {
+				height: 250px;
+				background-color: gray;
+				flex-basis: 70%;
+			}
+			
+			#footer {
+				height: 50px;
+				background-color: purple;
+				display: flex;
+			}
+			
+			#footer h2 {
+				margin: 0px;
+			}
+		</style>
+	</head>
+	<body>
+		<hr />
+		<div id="main">
+			<header id ="header">
+				<h1>Header</h1>
+			</header>
+	
+			<div id="layout">
+				<div id="sidebar1">
+					<h2>Sidebar1</h2>
+					<ul>
+						<li>Sidebar1 Menu</li>
+						<li>Sidebar1 Menu</li>
+						<li>Sidebar1 Menu</li>
+						<li>Sidebar1 Menu</li>
+					</ul>
+				</div>
+				
+				<div id="content">
+					<h2>Content</h2>
+					<p>CSS stands for Cascading Style Sheet.</p>
+					<p>CSS stands for Cascading Style Sheet.</p>
+					<p>CSS stands for Cascading Style Sheet.</p>
+					<p>CSS stands for Cascading Style Sheet.</p>
+					<p>CSS stands for Cascading Style Sheet.</p>
+				</div>
+			
+				<div id="sidebar2">
+					<h2>Sidebar2</h2>
+					<ul>
+						<li>Sidebar2 Menu</li>
+						<li>Sidebar2 Menu</li>
+						<li>Sidebar2 Menu</li>
+						<li>Sidebar2 Menu</li>
+					</ul>
+				</div>
+			</div>
+			<div id="footer">
+				<h2>Footer</h2>
+			</div>
+		</div>
+	</body>
+</html>

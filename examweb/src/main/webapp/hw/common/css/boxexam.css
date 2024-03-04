@@ -1,9 +1,15 @@
 @charset "UTF-8";
-h1 {
+h1, #second_content h3 {
 	color: #388e93;
+	margin: 0px;
 }
 
-#content {
+#first_content, #second_content{
+	width: 75%;
+	float: left;
+}
+
+.sub_content {
 	border: 1px none;
 	background-image: url("../images/background.gif");
 	background-color: #a7cece;
@@ -13,4 +19,21 @@ h1 {
 	padding-left: 85px;
 	padding-bottom: 50px;
 	font-style: italic;
+}
+
+#banner_content {
+	width: 20%;
+	border: 1px solid #388e93;
+	text-align: center;
+	padding-left: 20px;
+	padding-right: 20px;
+	float: right;
+}
+
+#banner_content h3 {
+	color: red;
+}
+
+#footer {
+	clear: both;
 }
