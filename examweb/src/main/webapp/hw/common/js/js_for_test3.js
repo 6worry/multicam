@@ -9,7 +9,7 @@ function number() {
 
         for (let i = 1; i < 10; i++) {
             document.write(`<tr><td> ${gugudan} * ${i} = ` + (gugudan * i) + "</td></tr>");
-        }
+        };
 
         document.write("</table>");
     } else {
