@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	function insertP () {
+		let newP = document.getElementById("root");
+		let add = document.createElement("p");
+		add.setAttribute("style", "background: yellow");
+		let content = document.createTextNode("newP");
+		
+		add.appendChild(content);
+		newP.appendChild(add);
+	};
+	
+	function deleteP () {
+		let newP = document.getElementById("root");
+		let del = newP.lastElementChild;
+		
+		newP.removeChild(del);
+	};
+	
+	function deleteDivAndP () {
+		let newP = document.getElementById("root");
+		
+		while(newP.hasChildNodes()) {
+			newP.removeChild(newP.lastChild);
+		};
+		
+		/* let del = [...newP.children];
+		
+		del.forEach((child) => {
+			newP.removeChild(child);
+		}); */
+	};
+</script>
+</head>
+<body>
+	<div id="layer"></div>
+
+	<hr>
+
+	<div id="root">
+		<p style="background: gray;">line01</p>
+		<p style="background: skyblue">line02</p>
+		<p style="background: green;">line03</p>
+		<p style="background: red;">line04</p>
+	</div>
+
+	<hr>
+	<button onclick="insertP()">P태그추가하기</button>
+	<button onclick="deleteP()">P태그삭제하기</button>
+	<button onclick="deleteDivAndP()">div안의 모든 p태그 삭제하기</button>
+	<button onclick="innerHTML_test()">innerHTML</button>
+
+
+</body>
+</html>

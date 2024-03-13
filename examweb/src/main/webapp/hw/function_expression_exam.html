@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+		<script type="text/javascript">
+			onload = (() => {
+				document.querySelector("input[value='1번버튼']").onclick = (() => {
+					alert("임의");
+				});
+				
+				document.querySelector("input[value='2번버튼']").onclick = (() => {
+					alert("2번");
+				});
+				
+				document.getElementById("three").onclick = (() => {
+					alert("3번");
+				});
+				
+				document.getElementById("four").onclick = mycallback;
+			});
+		
+			function mycallback() {
+				alert("4번");
+			};
+		</script>
+	</head>
+	<body>
+		<form>
+			<input type="button" value="1번버튼" />
+			<input type="button" value="2번버튼" />
+			<input type="button" id="three" value="3번버튼" />
+			<input type="button" id="four" value="4번버튼" />
+		</form>
+	</body>
+</html>
