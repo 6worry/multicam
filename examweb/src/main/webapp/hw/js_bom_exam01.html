@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+		<script type="text/javascript">
+			function cost() {
+				let price = 12900;
+				let discount = 0.1;
+				let count = document.getElementById("count").value;
+				let result = parseInt(count) * (price * (1- discount));
+				
+				document.getElementById("result").innerHTML = result;
+			};
+		</script>
+	</head>
+	<body>
+		<div class = "input">
+			수량: <input type="text" id="count" onkeyup="cost()"/>
+			<button>x</button>
+			<span id="result"></span>
+		</div>
+	</body>
+</html>
