@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>진영록</title>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+	</head>
+	<body>
+		<div id="layer"></div>
+	
+		<hr>
+	
+		<div id="root">
+			<p style="background: gray;">line01</p>
+			<p style="background: skyblue">line02</p>
+			<p style="background: green;">line03</p>
+			<p style="background: red;">line04</p>
+		</div>
+	
+		<hr>
+		<button id="add">P태그추가하기</button>
+		<button id="del">P태그삭제하기</button>
+		<button id="delAll">div안의 모든 p태그 삭제하기</button>
+		<button>innerHTML</button>
+		
+		<script type="text/javascript">
+			$(document).ready(() => {
+				$("#add").on("click", () => {
+					let data = $("<p>newP</p>");
+					data.css("background-color", "yellow");
+					$("#root").append(data);
+				});
+				
+				$("#del").on("click", () => {
+					let childlist = $("#root").children();
+					childlist.last().remove();
+				});
+				
+				$("#delAll").on("click", () => {
+					$("#root").empty();
+				});
+			});
+		</script>
+	</body>
+</html>
