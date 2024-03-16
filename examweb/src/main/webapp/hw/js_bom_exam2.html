@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>진영록</title>
+		<script type="text/javascript">
+			function search() {
+				let id = document.getElementById("ID").value;
+				// 약식으로 변수 만듬
+				/* let userId = `
+					SELECT u.id
+					FROM user u
+					WHERE u.id = ?
+					`; */
+				let regex = /[^a-zA-Z0-9가-힣]/g;
+				const resultString = id.replace(regex, '');
+				let result;
+				
+				if(id.length < 4) {
+					result = "4글자 이상의 글자를 입력하세요.";
+				} else if(id == "java") {
+					result = "이미 사용중인 아이디입니다.";
+				} else if(id != resultString) {
+					result = "사용할 수 없는 아이디입니다.";
+				} else {
+					result = "사용 가능한 아이디입니다.";
+				};
+				
+				//sql 연결시 사용
+				/* if(id.length < 4) {
+					result = "4글자 이상의 글자를 입력하세요.";
+				 } else if(id == userId) {
+					result = "이미 사용중인 아이디입니다."; 
+				} else if(id != resultString) {
+					result = "사용할 수 없는 아이디입니다.";
+				} else {
+					result = "사용 가능한 아이디입니다.";
+				}; */
+				
+				document.getElementById("result").innerHTML = result;
+			};
+		</script>
+	</head>
+	<body>
+		<h1>티몬 회원가입</h1>
+		<h2>필수항목</h2>
+		<div class = "input">
+			아이디: <input type="text" id="ID" onkeyup="search()"/><br />
+			<span id="result" style="color: red; font-size: 16px;"></span>
+		</div>
+	</body>
+</html>
