@@ -36,9 +36,11 @@ public class MyNetServerExam2 {
 				
 				pw.println("Hi, Welcome! Client!");
 				
+				String reMsg = "";
+				
 				while(true) {
 					String name = client.getInetAddress().getHostName();
-					String reMsg = br.readLine();
+					reMsg = br.readLine();
 					System.out.println(reMsg);
 					
 					if(reMsg == null) {
