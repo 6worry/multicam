@@ -5,10 +5,22 @@ public class TestAccount {
 		CheckingAccount acc1 = 
 			new CheckingAccount("111-222-333","장동건"
 					,1000000,"1234-5647-8888");
-		acc1.pay("1234-5678-8888", 500000);
+		
+		try {
+			acc1.pay("1234-5678-8888", 500000);
+		} catch (BankException e) {
+			System.out.println(e.getMessage());
+		}
+		
 		System.out.println("현재잔액====>"+acc1.getBalance());
-		acc1.pay("1234-5647-8888", 500000);
-		System.out.println("현재잔액====>"+acc1.getBalance());
+		
+		try {
+			acc1.pay("1234-5647-8888", 500000);
+		} catch (BankException e) {
+			System.out.println(e.getMessage());
+		}
+		
+		System.out.println("현재잔액====>"+acc1.getBalance());			
 	}
 }
 
@@ -77,12 +89,13 @@ class CheckingAccount extends Account{
 		this.cardNo = cardNo;
 	}
 	
-	public void pay(String cardNo, long amount) {
+	public void pay(String cardNo, long amount) throws BankException {
 		if(getCardNo().equals(cardNo) && amount <= getBalance()) {
 			System.out.println("지불 기능 수행함. 지불금액: " + amount);
 			withdraw(amount);
 		} else {
-			System.out.println("지불이 불가능 합니다.");			
+			throw new BankException("지불이 불가능 합니다.");		
+//			System.out.println("지불이 불가능 합니다.");			
 		}
 	}
 }
