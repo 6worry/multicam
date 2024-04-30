@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd">
+	<bean id="exam_Account" class="exam.Account" scope="prototype"/>
+	<bean id="exam_TV" class="exam.LgTV" />
+	<bean id="exam_TV2" class="exam.SamsungTV" />
+	<bean id="exam_Dice" class="exam.di.Dice" />
+	<bean id="exam_Player" class="exam.di.Player" scope="prototype">
+		<constructor-arg>
+			<ref bean="exam_Dice" />
+		</constructor-arg>
+	</bean>
+	<bean id="exam_Dice2" class="exam.di.setter.Dice" />
+	<bean id="exam_Player2" class="exam.di.setter.Player" scope="prototype">
+		 <property name="d" ref="exam_Dice2"/>
+	</bean>
+	<bean id="exam_Logic" class="exam.di.LogicImpl" />
+	<bean id="exam_Service" class="exam.di.ServiceImpl">
+		<constructor-arg value="name"/>
+		<constructor-arg value="msg"/>
+		<constructor-arg>
+			<ref bean="exam_Logic" />
+		</constructor-arg>
+	</bean>
+	<bean id="exam_Logic2" class="exam.di.setter.LogicImpl" />
+	<bean id="exam_Service2" class="exam.di.setter.ServiceImpl">
+		<property name="name" value="name" />
+		<property name="msg" value="msg" />
+		<property name="logic" ref="exam_Logic2" />
+	</bean>
+	<bean id="exam_Mysql_Article" class="exam.di.MysqlArticleDAO" />
+	<bean id="exam_Oracle_Article" class="exam.di.OracleArticleDAO" />
+	<bean id="exam_Mgr" class="exam.di.WriteArticleMgr">
+		<constructor-arg ref="exam_Mysql_Article"/>
+	</bean>
+	<bean id="exam_Mgr2" class="exam.di.WriteArticleMgr">
+		<constructor-arg ref="exam_Oracle_Article"/>
+	</bean>
+	<bean id="exam_Mysql_Article2" class="exam.di.setter.MysqlArticleDAO" />
+	<bean id="exam_Oracle_Article2" class="exam.di.setter.OracleArticleDAO" />
+	<bean id="exam_Mgr3" class="exam.di.setter.WriteArticleMgr">
+		<property name="articleDAO" ref="exam_Mysql_Article2"/>
+	</bean>
+	<bean id="exam_Mgr4" class="exam.di.setter.WriteArticleMgr">
+		<property name="articleDAO" ref="exam_Oracle_Article2"/>
+	</bean>
+	<bean id="exam_Output" class="exam.di.setter.FileOutputter" />
+	<bean id="exam_Message" class="exam.di.setter.MessageBean">
+		<constructor-arg name="name" value="name" />
+		<property name="greeting" value="Hi" />
+		<property name="outputter" ref="exam_Output"/>
+	</bean>
+	<context:component-scan base-package="exam.jdbc"></context:component-scan>
+	<bean id="jdbc" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver" />
+		<property name="url" value="jdbc:oracle:thin:@127.0.0.1:1521:xe"/>
+		<property name="username" value="scott" />
+		<property name="password" value="1111" />
+	</bean>
+	<bean id="template" class="org.springframework.jdbc.core.JdbcTemplate">
+		<constructor-arg ref="jdbc"/>
+	</bean>
+	<context:component-scan base-package="exam.jdbc.dept"></context:component-scan>
+	<bean id="jdbc_dept" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver" />
+		<property name="url" value="jdbc:oracle:thin:@127.0.0.1:1521:xe"/>
+		<property name="username" value="scott" />
+		<property name="password" value="1111" />
+	</bean>
+	<bean id="template2" class="org.springframework.jdbc.core.JdbcTemplate">
+		<constructor-arg ref="jdbc_dept"/>
+	</bean>
+	<context:component-scan base-package="exam.anno" ></context:component-scan>
+</beans>
