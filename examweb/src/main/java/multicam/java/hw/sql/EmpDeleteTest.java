@@ -24,16 +24,26 @@ public class EmpDeleteTest {
 		String password = "1111";
 		String sql = "DELETE FROM Emp WHERE EmpNo = ('" + EmpNo + "')";
 		
+		Connection con = null;
+		Statement state = null;
+		
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
-			Connection con = DriverManager.getConnection(url, user, password);
-			Statement state = con.createStatement();
+			con = DriverManager.getConnection(url, user, password);
+			state = con.createStatement();
 			System.out.println(state);
 			
 			int result = state.executeUpdate(sql);
 			System.out.println(result);
 		} catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();
+		} finally {
+			try {
+				if(state != null) state.close();
+				if(con != null) con.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
 	}
 }

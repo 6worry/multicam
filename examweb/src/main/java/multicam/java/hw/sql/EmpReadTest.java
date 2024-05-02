@@ -23,18 +23,30 @@ public class EmpReadTest {
 		String password = "1111";
 		String sql = "SELECT * FROM Emp WHERE EMPNo = '" + EmpNo + "'";
 		
+		Connection con = null;
+		Statement state = null;
+		ResultSet result = null;
+		
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
-			Connection con = DriverManager.getConnection(url, user, password);
-			Statement state = con.createStatement();
+			con = DriverManager.getConnection(url, user, password);
+			state = con.createStatement();
 			System.out.println(state);
-			ResultSet result = state.executeQuery(sql);
+			result = state.executeQuery(sql);
 			
 			while(result.next()) {
 				System.out.println(result.getString("EmpNo") + "\t" + result.getString("Ename") + "\t" + result.getString("Job") + "\t" + result.getString("Sal") + "\t" + result.getString("HireDate") + "\t" + result.getString("DeptNo") + "\t" + result.getString("Comm"));
 			}
 		} catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();
+		} finally {
+			try {
+				if(result != null) result.close();
+				if(state != null) state.close();
+				if(con != null) con.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
 	}
 }

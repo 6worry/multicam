@@ -5,23 +5,15 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.Scanner;
 
-public class EmpSelectTest {
+public class DeleteTest {
 	public static void main(String[] args) {
-		EmpSelectTest obj = new EmpSelectTest();
-		Scanner key = new Scanner(System.in);
-		System.out.println("사번: ");
-		String Table = key.next();
-		
-		obj.EmpSelectTest2(Table);
-	}
-	
-	public void EmpSelectTest2(String Table) {
 		String url = "jdbc:oracle:thin:@127.0.0.1:1521:xe";
 		String user = "scott";
 		String password = "1111";
-		String sql = "SELECT * FROM EMP";
+		String sql = "UPDATE member SET id = 'test' WHERE id = 'bts1'";
+		String sql2 = "DELETE FROM member WHERE id = 'test'";
+		String sql3 = "SELECT * FROM member";
 		
 		Connection con = null;
 		Statement state = null;
@@ -31,13 +23,15 @@ public class EmpSelectTest {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 			con = DriverManager.getConnection(url, user, password);
 			state = con.createStatement();
-			System.out.println(state);
-			result = state.executeQuery(sql);
-			
+			state.executeUpdate(sql);
+			state.executeUpdate(sql2);
+			result = state.executeQuery(sql3);
 			while(result.next()) {
-				System.out.println(result.getString("EmpNo") + "\t" + result.getString("Ename") + "\t" + result.getString("Job") + "\t" + result.getString("Sal") + "\t" + result.getString("HireDate") + "\t" + result.getString("DeptNo") + "\t" + result.getString("Comm"));
+				System.out.println(result.getString("id") + " " + result.getString("addr"));
 			}
-		} catch (ClassNotFoundException | SQLException e) {
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
 			try {

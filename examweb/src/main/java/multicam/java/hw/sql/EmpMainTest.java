@@ -58,16 +58,30 @@ public class EmpMainTest {
 
     public void empSelectTest() {
         String sql = "SELECT * FROM Emp";
-        try (Connection con = DriverManager.getConnection(URL, USER, PASSWORD);
-             Statement state = con.createStatement();
-             ResultSet result = state.executeQuery(sql)) {
+        
+        Connection con = null;
+		Statement state = null;
+		ResultSet result = null;
+        
+        try {
+        	con = DriverManager.getConnection(URL, USER, PASSWORD);
+            state = con.createStatement();
+            result = state.executeQuery(sql);
             System.out.println(state);
             while (result.next()) {
                 System.out.println(result.getString("EmpNo") + "\t" + result.getString("Ename") + "\t" + result.getString("Job") + "\t" + result.getString("Sal") + "\t" + result.getString("HireDate") + "\t" + result.getString("DeptNo") + "\t" + result.getString("Comm"));
             }
         } catch (SQLException e) {
             e.printStackTrace();
-        }
+        } finally {
+			try {
+				if(result != null) result.close();
+				if(state != null) state.close();
+				if(con != null) con.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
     }
 
     public void empDeleteTest(String EmpNo) {
@@ -77,29 +91,57 @@ public class EmpMainTest {
 
     public void empReadTest(String EmpNo) {
         String sql = "SELECT * FROM Emp WHERE EMPNo = '" + EmpNo + "'";
-        try (Connection con = DriverManager.getConnection(URL, USER, PASSWORD);
-                Statement state = con.createStatement();
-                ResultSet result = state.executeQuery(sql)) {
-               System.out.println(state);
-               while (result.next()) {
-                   System.out.println(result.getString("EmpNo") + "\t" + result.getString("Ename") + "\t" + result.getString("Job") + "\t" + result.getString("Sal") + "\t" + result.getString("HireDate") + "\t" + result.getString("DeptNo") + "\t" + result.getString("Comm"));
-               }
-           } catch (SQLException e) {
-               e.printStackTrace();
-           }
+        
+        Connection con = null;
+		Statement state = null;
+		ResultSet result = null;
+        
+		try {
+        	con = DriverManager.getConnection(URL, USER, PASSWORD);
+            state = con.createStatement();
+            result = state.executeQuery(sql);
+            System.out.println(state);
+            while (result.next()) {
+            	System.out.println(result.getString("EmpNo") + "\t" + result.getString("Ename") + "\t" + result.getString("Job") + "\t" + result.getString("Sal") + "\t" + result.getString("HireDate") + "\t" + result.getString("DeptNo") + "\t" + result.getString("Comm"));
+            }
+       } catch (SQLException e) {
+           e.printStackTrace();
+       } finally {
+			try {
+				if(result != null) result.close();
+				if(state != null) state.close();
+				if(con != null) con.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+       }
     }
 
     public void empSearchTest(String SearchName) {
         String sql = "SELECT * FROM Emp WHERE Ename LIKE '%" + SearchName + "%'";
-        try (Connection con = DriverManager.getConnection(URL, USER, PASSWORD);
-                Statement state = con.createStatement();
-                ResultSet result = state.executeQuery(sql)) {
-               System.out.println(state);
-               while (result.next()) {
-                   System.out.println(result.getString("EmpNo") + "\t" + result.getString("Ename") + "\t" + result.getString("Job") + "\t" + result.getString("Sal") + "\t" + result.getString("HireDate") + "\t" + result.getString("DeptNo") + "\t" + result.getString("Comm"));
-               }
-           } catch (SQLException e) {
-               e.printStackTrace();
-           }
+        
+        Connection con = null;
+		Statement state = null;
+		ResultSet result = null;
+		
+		try {
+        	con = DriverManager.getConnection(URL, USER, PASSWORD);
+            state = con.createStatement();
+            result = state.executeQuery(sql);
+            System.out.println(state);
+            while (result.next()) {
+            	System.out.println(result.getString("EmpNo") + "\t" + result.getString("Ename") + "\t" + result.getString("Job") + "\t" + result.getString("Sal") + "\t" + result.getString("HireDate") + "\t" + result.getString("DeptNo") + "\t" + result.getString("Comm"));
+            }
+       } catch (SQLException e) {
+           e.printStackTrace();
+       } finally {
+			try {
+				if(result != null) result.close();
+				if(state != null) state.close();
+				if(con != null) con.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+       }
     }
 }
