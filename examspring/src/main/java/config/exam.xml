@@ -74,4 +74,5 @@
 		<constructor-arg ref="jdbc_dept"/>
 	</bean>
 	<context:component-scan base-package="exam.anno" ></context:component-scan>
+	<context:component-scan base-package="exam.di.setter"></context:component-scan>
 </beans>
