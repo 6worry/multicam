@@ -32,15 +32,16 @@
         </tr>
         <tr>
           <td>JOB</td>
-          <td><select name="job">
-                <option value="salary">Salary</option>
-                <option value="houseKeeper" selected >HouseKeeper</option>
-                <option value="student">Student</option>
-                <option value="other">Other</option>
-              </select></td>
+          <td>
+	          <select name="job">
+	                <option value="salary">Salary</option>
+	                <option value="houseKeeper" selected >HouseKeeper</option>
+	                <option value="student">Student</option>
+	                <option value="other">Other</option>
+	          </select>
+       	  </td>
         </tr>
-        
-      </table><p/>
+      </table>
       <input type="submit" value="입력완료"/>
       <input type="reset" value="재입력"/>
     </form>
