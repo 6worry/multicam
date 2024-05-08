@@ -9,7 +9,7 @@
 <body>
 			<div class="col-lg-10">
 				<form role="form" class="form-horizontal"
-					action="/erp/dept/insert.do" method="post"
+					action="/examspring2/dept/insert" method="post"
 					
 					name="myform">
 					<fieldset>
@@ -44,7 +44,7 @@
 							<label class="control-label col-sm-2" for="deptStartDay">부서시작일</label>
 							<div class="col-sm-3">
 								<input type="text" id="deptStartDay" name="deptStartDay"
-									placeholder="부서시작일" class="form-control" minlength="10">
+									placeholder="부서시작일" class="form-control" minlength="1">
 
 							</div>
 						</div>
@@ -53,7 +53,7 @@
 							<label class="control-label col-sm-2" for="deptEndDay">부서종료일</label>
 							<div class="col-sm-3">
 								<input type="text" id="deptEndDay" name="deptEndDay"
-									placeholder="부서종료일" class="form-control" minlength="15">
+									placeholder="부서종료일" class="form-control" minlength="1">
 
 							</div>
 						</div>
@@ -156,7 +156,7 @@
 				</form>
 			</div>
 	<div>
-		<a href="/erp/emp/list.do">회원목록보기</a>
+		<a href="/examspring2/emp/list.do">회원목록보기</a>
 	</div>
 </body>
 </html>

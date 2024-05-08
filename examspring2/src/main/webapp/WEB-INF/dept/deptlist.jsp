@@ -1,6 +1,5 @@
-<%-- <%@ page language="java" contentType="text/html; charset=UTF-8"
+<%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
@@ -16,7 +15,7 @@
 
 </head>
 <body>
-
+<%-- <% ArrayList<DeptDTO> deptlist = (ArrayList<DeptDTO>)request.getAttribute("dto"); %> --%>
 			<div >
 				<h3>부서목록</h3>
 				<div style="padding-top: 30px">
@@ -38,23 +37,24 @@
 							</tr>
 						</thead>
 						<tbody>
-					
-								<tr>
-									<td><a href=""></a></td>
-									<td></td>
-									
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td><a
-										href="/erp/dept/delete.do?deptno=">삭제</a></td>
-								</tr>
-							<%}	%>
+						<%-- <% for(DeptDTO dept: deptlist) { %> --%>
+						<c:forEach items="${dto}" var="dept">
+	                        <tr>
+	                            <td><a href="/examspring2/dept/read.do?deptno=${dept.deptno}&action=READ">${dept.deptno}</a></td> <%-- <%=dept.getDeptname() %> --%>
+	                            <td>${dept.deptname}</td>
+	                            <td>${dept.deptStartDay}</td>
+	                            <td>${dept.deptlevel}</td>
+	                            <td>${dept.deptstep}</td>
+	                            <td>${dept.deptuppercode}</td>
+	                            <td>${dept.job_category}</td>
+	                            <td>${dept.mgr_id}</td>
+	                            <td>${dept.deptaddr}</td>
+	                            <td>${dept.depttel}</td>
+								<td>
+									<a href="/examspring2/dept/delete.do?deptno=${dept.deptno}">삭제</a>
+								</td>
+							</tr>
+						</c:forEach> <%-- <% } %> --%>
 						</tbody>
 					</table>
 				</div>
@@ -62,4 +62,3 @@
 			</div>
 </body>
 </html>
- --%>

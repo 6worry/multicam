@@ -1,7 +1,7 @@
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,7 +17,7 @@
 <body>
 	
 			<div class="col-lg-10">
-				<form role="form" class="form-horizontal" action="" method="get">
+				<form role="form" class="form-horizontal" action="/examspring2/dept/update" method="get">
 					<fieldset>
 						<div id="legend">
 							<legend>아래 양식을 작성해주세요.</legend>
@@ -26,7 +26,7 @@
 							<!-- 부서코드 -->
 							<label class="control-label col-sm-2" for="deptcode">부서코드</label>
 							<div class="col-sm-3">
-								
+								 ${dto.deptno}
 							</div>
 						</div>
 
@@ -37,7 +37,7 @@
 							<label class="control-label col-sm-2" for="name">부서명</label>
 							<div class="col-sm-3">
 								<!-- 부서명을 이곳에 출력하세요 -->
-								
+								 ${dto.deptname}
 							</div>
 						</div>
 						<div class="form-group">
@@ -45,7 +45,7 @@
 							<label class="control-label col-sm-2" for="id">부서생성일</label>
 							<div class="col-sm-3">
 								<!-- 부서생성일 이곳에 출력하세요 -->
-								
+								 ${dto.deptStartDay}
 							</div>
 						</div>
 						<div class="form-group">
@@ -53,7 +53,7 @@
 							<label class="control-label col-sm-2" for="addr">부서레벨</label>
 							<div class="col-sm-3">
 								<!-- 부서레벨을 이곳에 출력하세요 -->
-								
+								 ${dto.deptlevel}
 							</div>
 						</div>
 
@@ -62,7 +62,7 @@
 							<label class="control-label col-sm-2" for="hiredate">부서스텝</label>
 							<div class="col-sm-3">
 								<!-- 부서스텝를 이곳에 출력하세요 -->
-								
+								 ${dto.deptstep}
 							</div>
 						</div>
 						<div class="form-group">
@@ -70,7 +70,7 @@
 							<label class="control-label col-sm-2" for="point">상위부서번호</label>
 							<div class="col-sm-3">
 								<!-- 상위부서번호를 이곳에 출력하세요 -->
-								
+								 ${dto.deptuppercode}
 							</div>
 						</div>
 						<div class="form-group">
@@ -78,7 +78,7 @@
 							<label class="control-label col-sm-2" for="grade">업무분류</label>
 							<div class="col-sm-3">
 								<!-- 업무분류를 이곳에 출력하세요 -->
-								
+								 ${dto.job_category}
 							</div>
 						</div>
 						<div class="form-group">
@@ -86,7 +86,7 @@
 							<label class="control-label col-sm-2" for="grade">관리자</label>
 							<div class="col-sm-3">
 								<!-- 관리자를 이곳에 출력하세요 -->
-								
+								 ${dto.mgr_id}
 							</div>
 						</div>
 						<div class="form-group">
@@ -94,7 +94,7 @@
 							<label class="control-label col-sm-2" for="grade">부서주소</label>
 							<div class="col-sm-3">
 								<!-- 부서주소를 이곳에 출력하세요 -->
-								
+								 ${dto.deptaddr}
 							</div>
 						</div>
 						<div class="form-group">
@@ -102,14 +102,14 @@
 							<label class="control-label col-sm-2" for="grade">전화번호</label>
 							<div class="col-sm-3">
 								<!-- 전화번호를 이곳에 출력하세요 -->
-							
+							 ${dto.depttel}
 							</div>
 						</div>
 						<div class="form-group">
 							<!-- Button -->
 							<div class="col-sm-3 col-sm-offset-2">
 								<input type="button" value="수정" class="btn btn-success"
-								 onclick="" />
+								 onclick="location.href='/examspring2/dept/read.do?deptno=${dto.deptno}&action=UPDATE'" />
 							</div>
 						</div>
 					</fieldset>
