@@ -7,5 +7,5 @@ public interface JobDAO {
 	public List<JobDTO> select();
 	public int delete(String job_id);
 	public JobDTO read(String job_id);
-	int update(JobDTO job);
+	int update(JobDTO dto);
 }

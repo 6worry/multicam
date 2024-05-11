@@ -39,8 +39,8 @@ public class JobDAOImpl implements JobDAO {
 	}
 
 	@Override
-	public int update(JobDTO job) {
-		String sql = "UPDATE dept SET ";
-		return 0;
+	public int update(JobDTO dto) {
+		String sql = "UPDATE job SET WHERE job_id = ?";
+		return template.update(sql, dto.getJob_id(), dto.getJob_name(), dto.getJob_category(), dto.getMenupath());
 	}
 }

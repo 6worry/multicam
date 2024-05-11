@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,16 +9,21 @@
 <link rel="stylesheet"
 	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 <script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script
 	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 <script type="text/javascript">
+	let category = "${category}";
 	
+	$(document).ready(function() {
+		$("#category").val(category).attr("selected", "selected")
+		$("#category").change(function() {
+			location.href = "/examspring2/board/list?category=" + $(this).val();
+		})	
+	})
 </script>
 </head>
 <body>
-	<%
-	%>
 	
 	<div style="padding-top: 30px">
 		<div class="col-md-3" style="padding-bottom: 10px">
@@ -43,11 +48,19 @@
 				</tr>
 			</thead>
 			<tbody>
-				
+				<c:forEach var="board" items="${list}">
+					<tr>
+						<td>${board.board_no}</td>
+						<td><a href="/examspring2/board/read?board_no=${board.board_no}&action=READ">${board.title}</a></td>
+						<td>${board.id}</td>
+						<td>${board.write_date}</td>
+						<td><a href="/examspring2/board/delete?board_no=${board.board_no}">삭제</a></td>
+					</tr>
+				</c:forEach>
 			</tbody>
 		</table>
 	</div>
-	<form action="/erp/board/search.do" method="post">
+	<form action="/examspring2/board/search" method="post">
 		<select name="tag">
 			<option value="id">작성자</option>
 			<option value="title">제목</option>
@@ -55,7 +68,7 @@
 			<option value="write_date">작성일</option>
 		</select> <input type="text" name="search" /> <input type="submit" value="검색">
 		<ul class="nav navbar-nav navbar-right">
-			<li><a href="" style="text-align: right;">글쓰기</a></li>
+			<li><a href="/examspring2/board/write" style="text-align: right;">글쓰기</a></li>
 		</ul>
 	</form>
 

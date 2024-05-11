@@ -7,8 +7,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+
+import com.multi.erp.dept.DeptDTO;
 
 @Controller
 public class JobController {
@@ -56,5 +59,11 @@ public class JobController {
 		System.out.println(dto);
 		model.addAttribute("dto", dto);
         return "job/read";
+	}
+	
+	@PostMapping("/job/update.do")
+	public String update(JobDTO dto) {
+		service.update(dto);
+		return "redirect:/job/list";
 	}
 }

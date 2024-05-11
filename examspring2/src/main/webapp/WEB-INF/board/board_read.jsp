@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" session="true"%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE>
 <html>
 <head>
@@ -8,19 +8,24 @@
 <link rel="stylesheet"
 	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 <script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script
 	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 <script type="text/javascript">
-
+	let category = "${board.category}";
 	
-
+	$(document).ready(function() {
+		$("#category").val(category).attr("selected", "selected")
+		$("#category").change(function() {
+			location.href = "/examspring2/board/read?category=" + $(this).val();
+		})	
+	})
 </script>
 </head>
 <body>
 
 	<form class="form-horizontal" 
-		action="" 
+		action="/examspring2/board/update" 
 		method="post" >
 
 		
@@ -28,7 +33,7 @@
 			<div class="col-md-2 text-right">
 				<label for="id" class="control-label">번호</label>
 			</div>
-			<div class="col-md-8"></div>
+			<div class="col-md-8">${board.board_no}</div>
 		</div>
 		<div class="form-group">
 			<div class="col-md-2 text-right">
@@ -46,38 +51,42 @@
 		<div class="form-group">
 			<div class="col-md-2 text-right">
 				<label for="id" class="control-label">작성자</label>
+				
 			</div>
-			<div class="col-md-8"></div>
+			<div class="col-md-8">${board.id}</div>
 		</div>
 		<div class="form-group">
 			<div class="col-md-2 text-right">
 				<label for="title" class="control-label">제목</label>
+				
 			</div>
-			<div class="col-md-8"></div>
+			<div class="col-md-8">${board.title}</div>
 		</div>
 		<div class="form-group">
 			<div class="col-md-2 text-right">
 				<label for="title" class="control-label">작성날짜</label>
+				
 			</div>
-			<div class="col-md-8"></div>
+			<div class="col-md-8">${board.write_date}</div>
 		</div>
 		<div class="form-group">
 			<div class="col-md-2 text-right">
 				<label for="text" class="control-label">내용</label>
+				
 			</div>
 			<div class="col-md-8"
 				style="width: 500px; height: 400px; border: solid 1px;">
-				
+				${board.content}
 				</div>
 		</div>
 
 		<div class="form-group">
 			<div class="col-md-10 text-center">
-				<input type="submit" class="btn btn-lg btn-primary" 
-				value="수정">
+				<input type="button" class="btn btn-lg btn-primary" 
+				value="수정" onclick="location.href='/examspring2/board/read?board_no=${board.board_no}&action=UPDATE'">
 
 				<button type="button" class="btn btn-danger btn-lg"
-					onclick="location.href='/stswebTest/board/list.do'">
+					onclick="location.href='/examspring2/board/list?category=all'">
 					<i class="fa fa-fw fa-close"></i> 목록
 				</button>
 				<button type="button" class="btn btn-danger btn-lg"
