@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.multi.erp.member">
+	<select id="selectall" resultType="member">
+		SELECT * FROM member
+	</select>
+	
+	<select id="login" resultType="member" parameterType="member">
+		SELECT * FROM member WHERE id = #{id} and pass = #{pass}
+	</select>
+</mapper>

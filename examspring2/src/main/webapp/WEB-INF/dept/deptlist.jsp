@@ -38,7 +38,7 @@
 						</thead>
 						<tbody>
 						<%-- <% for(DeptDTO dept: deptlist) { %> --%>
-						<c:forEach items="${dto}" var="dept">
+						<c:forEach var="dept" items="${dto}">
 	                        <tr>
 	                            <td><a href="/examspring2/dept/read.do?deptno=${dept.deptno}&action=READ">${dept.deptno}</a></td> <%-- <%=dept.getDeptname() %> --%>
 	                            <td>${dept.deptname}</td>
