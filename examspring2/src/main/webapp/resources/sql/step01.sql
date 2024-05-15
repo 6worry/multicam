@@ -61,11 +61,15 @@ create table tbboard(
 	category  varchar2(20));
 
 --게시판에 업로드 되는 파일의 정보를 저장하기 위한 테이블
+DROP TABLE BOARD_FILE;
 create table board_file(
-	board_no varchar2(12),
+	board_file_no varchar2(10) PRIMARY KEY,
+	board_no varchar2(12) CONSTRAINT tbboard_fk REFERENCES tbboard(board_no),
 	originalFilename varchar2(30),
 	storeFilename varchar2(30)	
 );
+
+CREATE SEQUENCE boardfile_seq;
 
 --시퀀스
 create sequence tbboard_seq;

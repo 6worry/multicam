@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.multi.erp.schedule">
+	<select id="select" parameterType="String" resultType="schedule">
+		SELECT * FROM schedule s, member m WHERE s.scheduleUserId = m.id and scheduleUserId = #{scheduleUserId, jdbcType=VARCHAR}
+	</select>
+	
+	<insert id="insert" parameterType="schedule"> <!-- #{}와 PreparedStatement의 값과 연결 -->
+		INSERT INTO schedule (scheduleId, scheduleUserId, scheduleDay, title, category, boss, place) 
+		VALUES (tbboard_seq.nextval, #{scheduleUserId, jdbcType=VARCHAR}, #{scheduleDay}, #{title}, #{category}, #{boss}, #{place})
+	</insert>
+	
+	<select id="selectRead" parameterType="String" resultType="schedule">
+	  	SELECT * FROM schedule WHERE scheduleId = #{scheduleId}
+	</select>
+	
+	<delete id="delete" parameterType="String">
+		DELETE FROM schedule WHERE scheduleId = #{scheduleId}
+	</delete>
+	
+	<update id="update" parameterType="schedule">
+		UPDATE schedule 
+		SET scheduleId = #{scheduleId}, scheduleDay = #{scheduleDay}, title = #{title}, 
+			category = #{category}, boss = #{boss}, place = #{place}, content = #{content},
+		WHERE scheduleId = #{scheduleId}
+	</update>
+</mapper>
