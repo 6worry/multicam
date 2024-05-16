@@ -1,0 +1,23 @@
+{
+	"name": "진영록",
+	"history": [
+		{
+			"subject": "java",
+			"month": "3"
+		},
+		{
+			"subject": "servlet",
+			"month": "3"
+		}
+	],
+	"addr": {
+		"zip": "111-222",
+		"addr1": "인천시"
+	},
+	"age": "25",
+	"subject": [
+		"java",
+		"hadoop",
+		"secure-coding"
+	]
+}
