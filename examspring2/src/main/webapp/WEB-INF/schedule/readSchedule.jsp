@@ -28,7 +28,7 @@
                 <td>스케줄명</td>
                 <td>
                     <div class="mb-3" style="margin-top:13px;">
-                        <div class="col-md-8">${schedule.title}</div>
+                        <div class="col-md-8" >${schedule.title}</div>
                     </div>
                 </td>
               </tr>        

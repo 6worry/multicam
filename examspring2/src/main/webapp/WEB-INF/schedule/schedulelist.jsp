@@ -78,7 +78,7 @@
           </ul>
        
           <div class="container mt-3" style="text-align:right;">
-            <a href="/examspring2/schedule/insert" class="btn btn-secondary">일정등록</a>
+            <a href="/examspring2/schedule/insert?scheduleUserId=${user.id}" class="btn btn-secondary">일정등록</a>
           
           </div>
           

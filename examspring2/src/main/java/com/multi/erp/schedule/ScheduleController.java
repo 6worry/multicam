@@ -38,7 +38,7 @@ public class ScheduleController {
 	@PostMapping("/schedule/insert")
 	public String insert(ScheduleDTO dto) {
 		service.addSchedule(dto);
-		return "redirect:/schedule/list";
+		return "redirect:/schedule/list?scheduleUserId=" + dto.getScheduleUserId();
 	}
 	
 	@GetMapping("/schedule/read")
@@ -59,6 +59,6 @@ public class ScheduleController {
 	@PostMapping("/schedule/update")
 	public String update(ScheduleDTO dto) {
 		service.modifySchedule(dto);
-        return "redirect:/schedule/list";
+        return "redirect:/schedule/list?scheduleUserId=" + dto.getScheduleUserId();
 	}
 }

@@ -23,6 +23,8 @@ public class ScheduleDAOImpl implements ScheduleDAO {
 
 	@Override
 	public int modifySchedule(ScheduleDTO schedule) {
+		System.out.println("---------------------------");
+		System.out.println(schedule);
 		return sqlSessionTemplate.update("com.multi.erp.schedule.update", schedule);
 	}
 

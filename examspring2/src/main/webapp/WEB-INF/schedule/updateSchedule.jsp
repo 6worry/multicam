@@ -24,6 +24,12 @@
             </colgroup>
         
             <tbody>    
+	            <div class="mb-3" style="margin-top:13px;">
+	                         <input type="hidden" class="form-control" id="scheduleId" name="scheduleId" 
+	                        value="${schedule.scheduleId}" >
+	                         <input type="hidden" class="form-control" id="scheduleId" name="scheduleUserId" 
+	                        value="${user.id}" >
+	                    </div>
               <tr>
                 <td>스케줄명</td>
                 <td>
