@@ -54,4 +54,20 @@
 	<update id="update" parameterType="board">
 		UPDATE tbboard SET category = #{category}, title = #{title}, content = #{content} WHERE board_no = #{board_no}
 	</update>
+	
+	<insert id="fileinsert" parameterType="java.util.List">
+		INSERT ALL 
+		<foreach collection="list" item="file" separator=" ">
+			INTO BOARD_FILE VALUES (#{file.board_file_no}, tbboard_seq.currval, #{file.originalFilename}, #{file.storeFilename})
+		</foreach>
+		SELECT * FROM dual
+	</insert>
+	
+	<select id="fileselect" parameterType="String" resultType="boardfile">
+		SELECT * FROM board_file WHERE board_no = #{boardno}
+	</select>
+	
+	<select id="getfileinfo" parameterType="String" resultType="boardfile">
+		SELECT * FROM board_file WHERE board_file_no = #{boardFileno}
+	</select>
 </mapper>
