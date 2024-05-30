@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h2>test54321</h2>
+	<div>
+		<h2>ID: <span th:text="${person.id}"></span></h2>
+		<h2>Pass: <span th:text="${person.pass}"></span></h2>
+		<h2>Name: <span th:text="${person.name}"></span></h2>
+		<h2>Point: <span th:text="${person.point}"></span></h2>
+	</div>
+	
+	<h2>LIST</h2>
+	<table border="1">
+		<tr>
+			<th>ID</th>
+			<th>PW</th>
+			<th>Name</th>
+			<th>Point</th>
+		</tr>
+		
+		<tr th:each="a: ${list}">
+			<td th:text="${a.id}"></td>
+			<td th:text="${a.pass}"></td>
+			<td th:text="${a.name}"></td>
+			<td th:text="${a.point}"></td>
+		</tr>
+	</table>
+	
+	<h2>조건 만족값</h2>
+	<table border="1">
+		<tr>
+			<th>ID</th>
+			<th>PW</th>
+			<th>Name</th>
+			<th>Point</th>
+			<th>합격여부</th>
+		</tr>
+		
+		<tr th:each="a: ${list}">
+			<td th:text="${a.id}"></td>
+			<td th:text="${a.pass}"></td>
+			<td th:text="${a.name}"></td>
+			<td th:text="${a.point}"></td>
+			<td>
+				<span th:text="합격" th:if="${a.point >= 90}"></span>
+				<span th:text="불합격" th:unless="${a.point >= 90}"></span>
+			</td>
+		</tr>
+	</table>
+	
+	<h2>하이퍼링크</h2>
+	<h3><a th:href="@{/th/linktest(data=${person.name})}">test</a></h3>
+	<h3><a th:href="@{/th/linktest(id=${person.id}, data=${person.point})}">test2</a></h3>
+</body>
+</html>

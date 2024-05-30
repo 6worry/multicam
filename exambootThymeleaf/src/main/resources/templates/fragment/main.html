@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h2>main</h2>
+	<div style="background-color: yellow; height: 100px">
+		1
+	</div>
+	
+	<div id="top" th:insert="~{fragment/fragment :: fragment}">
+		
+	</div>
+	
+	<div style="background-color: yellow; height: 100px">
+		2
+	</div>
+	<div style="background-color: yellow; height: 100px">
+		3
+	</div>
+	<div id="menu1" th:replace="~{fragment/fragment :: fragment}">
+		
+	</div>
+	
+	<div id="menu2" th:replace="fragment/fragment :: fragment2">
+		
+	</div>
+	
+	<div style="background-color: yellow; height: 100px">
+		4
+	</div>
+	
+	<div id="body" th:replace="fragment/fragment2 :: fragment3('test', '12345')">
+		
+	</div>
+</body>
+</html>

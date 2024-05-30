@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h2>test54321</h2>
+	<hr />
+	<h2>데이터: <span th:text="${val}"></span></h2>
+	<h2>결과: <span th:text="성공" th:if="${val >=100}"></span></h2>
+	<h2>결과2: <span th:text="실패" th:unless="${val >=100}"></span></h2>
+	
+	<h2>switch</h2>
+	<div th:switch="${age}">
+		<span th:case="10">10</span>
+		<span th:case="20">20</span>
+		<span th:case="30">30</span>
+		<span th:case="40">40</span>
+		<span th:case="50">50</span>
+		<span th:case="*">ETC</span>
+	</div>
+</body>
+</html>
