@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.multi.erp.board">
+	<select id="selectall" resultType="board">
+		SELECT * FROM tbboard
+	</select>
+	
+	<insert id="insert" parameterType="board"> <!-- #{}와 PreparedStatement의 값과 연결 -->
+		INSERT INTO tbboard VALUES (tbboard_seq.nextval, #{id}, #{title}, #{content}, sysdate, #{category})
+	</insert>
+	
+	<select id="searchTitle" parameterType="String" resultType="board">
+		  SELECT * FROM tbboard WHERE title LIKE '%' || #{title} || '%'
+	</select>
+	
+	<select id="searchTag" parameterType="Map" resultType="board">
+		  SELECT * FROM tbboard 
+			<where>
+				<if test="tag == 'title' and data !=''">
+				  title LIKE '%' || #{data} || '%'
+				</if>
+				
+				<if test="tag == 'id' and data !=''">
+				  id LIKE '%' || #{data} || '%'
+				</if>
+				
+				<if test="tag == 'content' and data !=''">
+				  content LIKE '%' || #{data} || '%' 
+				</if>
+				
+				<if test="tag == 'write_date' and data !=''">
+					  <!-- trunc(write_date) &lt;= #{data} -->
+					<![CDATA[
+					  trunc(write_date) <= #{data}
+					]]>
+				</if>
+			</where>
+	</select>
+	
+	<select id="categorySelect"  parameterType="String" resultType="board">
+		SELECT * FROM tbboard WHERE category = #{category}
+	</select>
+	
+	<select id="selectRead" parameterType="String" resultType="board">
+	  	SELECT * FROM tbboard WHERE board_no = #{board_no}
+	</select>
+	
+	<delete id="delete" parameterType="String">
+		DELETE FROM tbboard WHERE board_no = #{board_no}
+	</delete>
+	
+	<update id="update" parameterType="board">
+		UPDATE tbboard SET category = #{category}, title = #{title}, content = #{content} WHERE board_no = #{board_no}
+	</update>
+	
+	<insert id="fileinsert" parameterType="java.util.List">
+		INSERT ALL 
+		<foreach collection="list" item="file" separator=" ">
+			INTO BOARD_FILE VALUES (#{file.board_file_no}, tbboard_seq.currval, #{file.originalFilename}, #{file.storeFilename})
+		</foreach>
+		SELECT * FROM dual
+	</insert>
+	
+	<select id="fileselect" parameterType="String" resultType="boardfile">
+		SELECT * FROM board_file WHERE board_no = #{boardno}
+	</select>
+	
+	<select id="getfileinfo" parameterType="String" resultType="boardfile">
+		SELECT * FROM board_file WHERE board_file_no = #{boardFileno}
+	</select>
+</mapper>
