@@ -1,10 +1,9 @@
 package com.example.erp.dto;
 
-import org.apache.ibatis.type.Alias;
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.apache.ibatis.type.Alias;
 
 @Data
 @AllArgsConstructor

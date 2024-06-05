@@ -1,13 +1,12 @@
 package com.example.erp.dto;
 
 
-import java.sql.Date;
-import java.util.List;
-
+import com.fasterxml.jackson.annotation.JsonFormat;
 import org.apache.ibatis.type.Alias;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
+import java.sql.Date;
+import java.util.List;
 
 @Alias("board")
 public class BoardDTO {
