@@ -126,7 +126,7 @@ public class BoardController {
 	
 	@GetMapping("/ajax/list")
 	@ResponseBody
-	public List<BoardDTO> ajaxlist(String category) {
+	public List<BoardDTO> ajaxlist(@RequestParam("category") String category) {
 		List<BoardDTO> boardlist = service.findByCategory(category);
 		return boardlist;
 	}

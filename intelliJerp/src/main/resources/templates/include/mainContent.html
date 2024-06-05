@@ -11,47 +11,47 @@
 }
 
 </style>
-<script type="text/javascript">
-    $(document).ready(function() {
-        $("#boardCategory>li").each(function() {
-            $(this).click(function() {
-                let category = $(this).text();
-                let querydata = {"category": category};
-                
-                $("#boardCategory>li").removeClass("active");
-                $(this).addClass("active");
-                
-                $.ajax({
-                    url: "/examspring2/ajax/list",
-                    type: "get",
-                    data: querydata,
-                    dataType: "json",
-                    success: function(resp) {
-                        $("#boardTable").empty();
-                        
-                        resp.forEach(function(board) {
-                        	let date = new Date(board.write_date).toISOString().slice(0,10);
-                            let row = 
-                            	"<tr><td class='boardContent'>" + "<a href='/examspring2/board/read?board_no=" 
-                        		+ board.board_no + "&action=READ'>" + board.title + "</a></td><td class='boardDate'>" 
-                        		+ date + "</td></tr>";
-                                
-                            $("#boardTable").append(row);
-                        });
-
-                    }, 
-                    error: function(obj, msg, statusMsg) {
-                        console.log("bad" + obj + ", " + msg + ", " + statusMsg);  
-                    }
-                });
-            });
-        });
-    });
-</script>
 <title>Insert title here</title>
 </head>
 <body>
     <div class="container" th:fragment="mainContent">
+        <script type="text/javascript">
+            $(document).ready(function() {
+                $("#boardCategory>li").each(function() {
+                    $(this).click(function() {
+                        let category = $(this).text();
+                        let querydata = {"category": category};
+
+                        $("#boardCategory>li").removeClass("active");
+                        $(this).addClass("active");
+
+                        $.ajax({
+                            url: "/erp/ajax/list",
+                            type: "get",
+                            data: querydata,
+                            dataType: "json",
+                            success: function(resp) {
+                                $("#boardTable").empty();
+
+                                resp.forEach(function(board) {
+                                    let date = new Date(board.write_date).toISOString().slice(0,10);
+                                    let row =
+                                        "<tr><td class='boardContent'>" + "<a href='/erp/board/read?board_no="
+                                        + board.board_no + "&action=READ'>" + board.title + "</a></td><td class='boardDate'>"
+                                        + date + "</td></tr>";
+
+                                    $("#boardTable").append(row);
+                                });
+
+                            },
+                            error: function(obj, msg, statusMsg) {
+                                console.log("bad" + obj + ", " + msg + ", " + statusMsg);
+                            }
+                        });
+                    });
+                });
+            });
+        </script>
         <div class="row">
             <div class="col-sm-7">
                 <div id="myCarousel" class="carousel slide" data-ride="carousel"
