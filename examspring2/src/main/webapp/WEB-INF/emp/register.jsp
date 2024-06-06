@@ -8,22 +8,20 @@
 <head>
 <meta charset="UTF-8">
 	<title>Insert title here</title>
-	<script type="text/javascript">
-		
-	</script>
+	</style>
  </head>
 	
 <body>
 	<div class="container-fluid">
 			
-			<form  class="form-horizontal"			action="/erp/emp/insert.do" 
-				method="POST" 				name="myform">
+			<form  class="form-horizontal"			action="/examspring2/member/insert.do" 
+				method="POST" enctype="multipart/form-data"				name="myform">
 				<fieldset>
 					<div id="legend">
 					</div>
 					<div class="form-group" style="padding: 40px">
 						<p class="centered">
-							<img src="/erp/images/myphoto.jpg" 
+							<img src="/examspring2/images/playdata1.jpg" 
 							 id="userImage" style="width: 100px">
 						</p>
 						<div>
@@ -38,6 +36,9 @@
 						<label class="control-label col-sm-2" for="orgcode">부서코드</label>
 						<div class="col-sm-3">
 							<select name="deptno" class="form-control" >
+								<c:forEach var="list" items="${list}">
+									<option value="${list.deptno}">${list.deptname}</option>
+								</c:forEach>
 							</select>
 						</div>
 					</div>
@@ -53,16 +54,15 @@
 
 						</div>
 					</div>
-					<div class="form-group">
+					<div class="form-group checkId">
 						<!-- 사번-->
 						<label class="control-label col-sm-2" for="id">사번</label>
 						<div class="col-sm-3">
 							<input type="text" id="id" name="id"
 								placeholder="사번" class="form-control" 
 								minlength="4"  >
-							
 						</div>
-						<span id="checkVal" style="color: red;"></span>
+						<span id="checkId" style="color: red;"></span>
 					</div>
 					<div class="form-group">
 						<!-- 패스워드-->
@@ -179,8 +179,47 @@
 					</div>
 				</fieldset>
 			</form>
-			<div><a href="/erp/emp/list.do">회원목록보기</a></div>
+			<div><a href="/examspring2/member/list">회원목록보기</a></div>
 	</div>
-	
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$("#id").on("blur", function() {
+				let id = $("#id").val();
+				
+				if(id.length >= 4) {
+					let querydata = {"id": id};
+				
+					$.ajax({
+						url: "/examspring2/member/idcheck",
+						type: "post",
+						data: querydata,
+						dataType: "json",
+						success: success_run, 
+						error: error_run
+					});
+				} else if(id.length > 0 & id.length < 3) {
+					fail_run();
+				}
+			});
+		});
+			
+		function success_run(resp) {
+			if (resp.check) {
+                $("#checkId").html("사용불가능 ID");
+                console.log(resp);
+            } else {
+                $("#checkId").html("사용가능 ID");
+                console.log(resp);
+            }
+		}
+		
+		function error_run(obj, msg, statusMsg) {
+			console.log("bad" + obj + ", " + msg + ", " + statusMsg);	
+		}
+		
+		function fail_run() {
+        	$("#checkId").html("4자 이상 입력해");
+		}
+	</script>
 </body>
 </html>

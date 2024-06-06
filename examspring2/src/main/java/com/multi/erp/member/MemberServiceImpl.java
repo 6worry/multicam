@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.ui.Model;
 
 @Service
 public class MemberServiceImpl implements MemberService {
@@ -18,14 +17,12 @@ public class MemberServiceImpl implements MemberService {
 
 	@Override
 	public int insert(MemberDTO user) {
-		// TODO Auto-generated method stub
-		return 0;
+		return dao.insert(user);
 	}
 
 	@Override
 	public boolean idCheck(String id) {
-		// TODO Auto-generated method stub
-		return false;
+		return dao.idCheck(id);
 	}
 
 	@Override
@@ -60,7 +57,16 @@ public class MemberServiceImpl implements MemberService {
 
 	@Override
 	public MemberDTO login(MemberDTO loginUser) {
-		return dao.login(loginUser);
+		MemberDTO user = dao.login(loginUser);
+		
+		if(user != null) {
+			String menupath = user.getMenupath();
+			menupath = menupath.substring(menupath.indexOf("/")+1, menupath.indexOf("_"));
+			
+			user.setMenupath(menupath);
+		}
+		
+		return user;
 	}
 
 }

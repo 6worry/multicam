@@ -62,4 +62,19 @@ public class BoardDAOImpl implements BoardDAO {
 	public List<BoardDTO> findByCategory(String category) {
 		return sqlSessionTemplate.selectList("com.multi.erp.board.categorySelect", category);
 	}
+
+	@Override
+	public int insertFile(List<BoardFileDTO> boardfiledtolist) {
+		return sqlSessionTemplate.insert("com.multi.erp.board.fileinsert", boardfiledtolist);
+	}
+
+	@Override
+	public List<BoardFileDTO> getFileList(String boardno) {
+		return sqlSessionTemplate.selectList("com.multi.erp.board.fileselect", boardno);
+	}
+
+	@Override
+	public BoardFileDTO getFile(String boardFileno) {
+		return sqlSessionTemplate.selectOne("com.multi.erp.board.getfileinfo", boardFileno);
+	}
 }

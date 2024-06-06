@@ -54,7 +54,11 @@
 						<td><a href="/examspring2/board/read?board_no=${board.board_no}&action=READ">${board.title}</a></td>
 						<td>${board.id}</td>
 						<td>${board.write_date}</td>
-						<td><a href="/examspring2/board/delete?board_no=${board.board_no}">삭제</a></td>
+						<td>
+							<c:if test="${user.id == board.id}">
+								<a href="/examspring2/board/delete?board_no=${board.board_no}">삭제</a>
+							</c:if>
+						</td>
 					</tr>
 				</c:forEach>
 			</tbody>

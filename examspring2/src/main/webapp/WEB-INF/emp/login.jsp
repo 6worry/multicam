@@ -8,7 +8,7 @@
 
 </head>
 <body>
-	<form name="login_frm" action="/examspring2/member/login" method="post">
+	<form name="login_frm" action="/examspring2/member/spring/login" method="post">
 		<table cellpadding="0" cellspacing=5 width="815" bgcolor=#f3f3f3
 			border=0>
 			<tr>

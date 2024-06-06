@@ -64,6 +64,21 @@
 		</div>
 		<div class="form-group">
 			<div class="col-md-2 text-right">
+				<label for="title" class="control-label">첨부파일</label>
+				
+			</div>
+			<div class="col-md-8">
+				<c:forEach var="file" items="${boardfilelist}">
+					<h4>
+						<a href="/examspring2/board/download/${board.id}/${board.board_no}/${file.board_file_no}">
+						${file.originalFilename}</a>
+					</h4>
+					<img src="/examspring2/upload/${file.storeFilename}" width="200">
+				</c:forEach>	
+			</div>
+		</div>
+		<div class="form-group">
+			<div class="col-md-2 text-right">
 				<label for="title" class="control-label">작성날짜</label>
 				
 			</div>
@@ -79,20 +94,23 @@
 				${board.content}
 				</div>
 		</div>
-
 		<div class="form-group">
 			<div class="col-md-10 text-center">
-				<input type="button" class="btn btn-lg btn-primary" 
-				value="수정" onclick="location.href='/examspring2/board/read?board_no=${board.board_no}&action=UPDATE'">
+				<c:if test="${user.id == board.id}">
+					<input type="button" class="btn btn-lg btn-primary" 
+					value="수정" onclick="location.href='/examspring2/board/read?board_no=${board.board_no}&action=UPDATE'">
+				</c:if>
 
 				<button type="button" class="btn btn-danger btn-lg"
 					onclick="location.href='/examspring2/board/list?category=all'">
 					<i class="fa fa-fw fa-close"></i> 목록
 				</button>
-				<button type="button" class="btn btn-danger btn-lg"
-					id="deletebtn">
-					<i class="fa fa-fw fa-close"></i> 삭제
-				</button>
+				<c:if test="${user.id == board.id}">
+					<button type="button" class="btn btn-danger btn-lg"
+						id="deletebtn">
+						<i class="fa fa-fw fa-close"></i> 삭제
+					</button>
+				</c:if>
 			</div>
 		</div>
 	</form>

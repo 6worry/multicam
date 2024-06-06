@@ -67,4 +67,26 @@ public class BoardServiceImpl implements BoardService {
 		
 		return boardlist;
 	}
+
+	@Override
+	public int insert(BoardDTO board, List<BoardFileDTO> boardfiledtolist) {
+		if(boardfiledtolist.size() == 0) {
+			dao.insert(board);
+		} else {
+			dao.insert(board);
+			dao.insertFile(boardfiledtolist);
+		}
+		
+		return 0;
+	}
+
+	@Override
+	public List<BoardFileDTO> getFileList(String boardno) {
+		return dao.getFileList(boardno);
+	}
+
+	@Override
+	public BoardFileDTO getFile(String boardFileno) {
+		return dao.getFile(boardFileno);
+	}
 }

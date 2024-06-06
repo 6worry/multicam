@@ -7,7 +7,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <link rel="stylesheet" href="/erp/common/css/main.css" />
+  <link rel="stylesheet" href="/examspring2/resources/static/common/css/main.css" />
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -42,7 +42,7 @@
 			 		 style="border-color:white;height: 800px;">
 				        <div style="background-color:#63cde7;padding: 20px;
 				        font-family:HY-견고딕;font-size: 16pt;color: white;
-				         font-weight: bolder;">${loginUser.job_category}</div>
+				         font-weight: bolder;">${user.job_category}</div>
 
 				       <tiles:insertAttribute name="menu" />
       				 </div>

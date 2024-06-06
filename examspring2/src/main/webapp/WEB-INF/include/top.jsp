@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="/examspring2/common/css/main.css" />
+  <link rel="stylesheet" href="/examspring2/resources/static/common/css/main.css" />
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -42,8 +42,11 @@
 				
 					</c:when>
 					<c:otherwise>
-			
-						<li><a href="/examspring2/member/logout"><span class="glyphicon glyphicon-log-out"></span>
+						<li><a href="/examspring2/schedule/list?scheduleUserId=${user.id}"><span class="glyphicon glyphicon-log-out"></span>
+								나의 스케줄</a></li>
+						<li><a href="/examspring2/member/mypage"><span class="glyphicon glyphicon-log-out"></span>
+								마이페이지</a></li>
+						<li><a href="/examspring2/member/spring/logout"><span class="glyphicon glyphicon-log-out"></span>
 								Logout</a></li>
 					</ul>
 					
@@ -67,7 +70,7 @@
 	<div class="container-fluid">
 			<div class="collapse navbar-collapse" id="myNavbar">
 				<ul class="nav navbar-nav">
-					<li class="active"><a href="#">Home</a></li>
+					<li class="active"><a href="/examspring2/index.do">Home</a></li>
 					<li><a href="/examspring2/menu/insa.do">업무관리</a></li>
 					<li><a href="#">자원관리</a></li>
 					<li><a href="/examspring2/board/list?category=all">커뮤니티</a></li>

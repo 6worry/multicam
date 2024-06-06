@@ -8,6 +8,20 @@
 	</select>
 	
 	<select id="login" resultType="member" parameterType="member">
-		SELECT * FROM member WHERE id = #{id} and pass = #{pass}
+		SELECT m.*, d.deptname, j.menupath, j.job_category 
+		FROM member m, dept d, job j 
+		WHERE m.deptno = d.deptno
+		AND d.job_category = j.job_id
+		AND id = #{id} and pass = #{pass}
+	</select>
+	
+	<insert id="insert" parameterType="member">
+		insert into member values(#{id},#{pass},#{name},#{ssn},#{birthday},#{marry},
+		#{gender},null,null,null,sysdate,null,#{deptno},null,#{zipcode},#{addr},#{detailaddr},
+		#{phonehome},#{phoneco},#{phonecell},#{email},#{profile_photo})
+	</insert>
+	
+	<select id="idcheck" parameterType="String" resultType="member">
+		SELECT id FROM member WHERE id = #{id}
 	</select>
 </mapper>

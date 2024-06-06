@@ -22,15 +22,12 @@ public interface BoardDAO {
 	//category별로 검색
 	List<BoardDTO> findByCategory(String category);
 	
-	/*
-	 * //=================첨부파일을 조회하기 위한 기능=========================
-	 * 
-	 * //첨부파일을 저장하기 위한 메소드 int insertFile(List<BoardFileDTO> boardfiledtolist);
-	 * //게시글을 상세보기한 경우 보여질 업로드한 파일의 목록 조회 List<BoardFileDTO> getFileList(String
-	 * boardno); BoardFileDTO getFile(BoardFileDTO inputdata);
-	 */
+	
+	 //=================첨부파일을 조회하기 위한 기능=========================
+	 
+	 //첨부파일을 저장하기 위한 메소드 
+	int insertFile(List<BoardFileDTO> boardfiledtolist);
+	 //게시글을 상세보기한 경우 보여질 업로드한 파일의 목록 조회 
+	List<BoardFileDTO> getFileList(String boardno);
+	BoardFileDTO getFile(String boardFileno); 
 }
-
-
-
-

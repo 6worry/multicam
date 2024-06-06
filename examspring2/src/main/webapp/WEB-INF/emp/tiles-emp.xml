@@ -6,7 +6,12 @@
 	<definition name="login" extends="mainTemplate"/>
 	
 	<definition name="member/list" extends="mainTemplate">
-		<put-attribute name="menu" value="/WEB-INF/menu/board_menu.jsp"/>
+		<put-attribute name="menu" value="/WEB-INF/menu/insa_menu.jsp"/>
 		<put-attribute name="content" value="/WEB-INF/emp/memberlist.jsp"/>
+	</definition>
+	
+	<definition name="member/insert" extends="mainTemplate">
+		<put-attribute name="menu" value="/WEB-INF/menu/insa_menu.jsp"/>
+		<put-attribute name="content" value="/WEB-INF/emp/register.jsp"/>
 	</definition>
 </tiles-definitions>
